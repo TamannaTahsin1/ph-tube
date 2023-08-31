@@ -3,13 +3,18 @@ const handleCategory = async () =>{
    const data = await res.json();
    const categories = data.data;
    console.log(categories);
-
+    // for buttons
    const btnContainer = document.getElementById('btn-container');
    categories.forEach((category) => {
     const div = document.createElement('div');
     div.innerHTML =
-    `<button class="btn hover:bg-red-700">${category.category}</button>`;
+    `<button onclick="handleLoadContent('${category.category_id}')" class="btn hover:bg-red-700">${category.category}</button>`;
     btnContainer.appendChild(div)
    });
 }
+
+    //adding content in card
+    const handleLoadContent = (categoryId) => {
+        console.log(categoryId);
+    }
 handleCategory()
