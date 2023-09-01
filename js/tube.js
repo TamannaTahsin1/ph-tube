@@ -27,7 +27,7 @@ const handleCategory = async () =>{
             `<div class="card md:w-80 md:h-80 lg:w-96 lg:h-96 bg-base-100 shadow-xl m-5">
             <figure><img src="${news?.thumbnail}" alt="card" class="w-96"/>
             <div class="absolute">
-            <div class="absolute top-16 left-20 right-10 pr-20 px-4 bg-black rounded-xl text-white">${news?.others?.posted_date}</div>
+            <div class="absolute md:top-10 lg:top-16 lg:left-20 lg:right-10 pr-20 px-4 bg-black rounded-xl text-white text-xs text-center">${secondsToHour(news?.others?.posted_date)}</div>
             <div>
             </figure>
             <div class="card-body">
@@ -42,13 +42,27 @@ const handleCategory = async () =>{
                     <p>${news.authors[0].verified ? '<img src="./img/var.svg" class="mr-28 ">' : " "}</p>                  
                 </div>
                 <p class="ml-16">${news?.others?.news}</p>
+
           </div>
     </div>`;
     cardContainer.appendChild(div);
-        })
-        
+        });
     }
 handleCategory()
 handleLoadContent(1000)
+
+// function for time
+function secondsToHour(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+
+    let formattedTime = '';
+
+    formattedTime += (hours > 0) ? hours + ' hrs ' : '';
+    formattedTime += (minutes > 0) ? minutes + ' min ' : '';
+    
+    return formattedTime;
+  }
+  
 
     // sorting 
