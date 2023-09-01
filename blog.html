@@ -14,18 +14,58 @@
     </head>
 <body>
     <header>
-        <nav class=" md:flex lg:flex justify-around lg:mt-10 lg:mx-10">
-            <img src="img/Logo.png" alt="" width="200px">
-            <button class="btn btn-active bg-red-700 text-white">Home</button>
-        </nav>
+        <section>
+            <nav class=" md:flex lg:flex justify-around mt-10 lg:mx-10">
+                <img src="img/Logo.png" alt="" width="200px">
+                <button class="btn btn-active bg-red-700 text-white">
+                    <a href="index.html">Home</a>
+                </button>
+            </nav>
+        </section>
+
         <div class="divider container mx-auto mt-7"></div> 
     </header>
     <main>
-        <!-- banner section starts here -->
-        <section>
-            <h1 class="font-bold text-start m-10 text-5xl text-red-700 pl-20 ">Here is some Blog Question</h1>
-        </section>
-        <!-- banner section ends here -->
+        <!-- banner section starts here -->      
+        <section class="max-w-screen-xl mx-auto px-8 md:px-16 lg:px-24 py-5 my-10 mt-24">
+            <div class="text-center pb-5">
+              <h1 class="text-4xl font-extrabold text-red-600">Here is some <span class="text-black">Blog Question</span> </h1>
+            </div>
+            <div class="hero min-h-full">
+              <div class="hero-content">
+                <div>
+                  <div class="collapse collapse-plus bg-base-200 mb-7">
+                    <input type="radio" name="my-accordion-3" checked="checked" /> 
+                    <div class="collapse-title text-xl font-medium">
+                        Discuss the scope of var, let, and const
+                    </div>
+                    <div class="collapse-content"> 
+                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                    </div>
+                  </div>
+                  <div class="collapse collapse-plus bg-base-200 mb-7">
+                    <input type="radio" name="my-accordion-3" /> 
+                    <div class="collapse-title text-xl font-medium">
+                        Tell us the use cases of null and undefined!
+                    </div>
+                    <div class="collapse-content"> 
+                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                    </div>
+                  </div>
+                  <div class="collapse collapse-plus bg-base-200 mb-7">
+                    <input type="radio" name="my-accordion-3" /> 
+                    <div class="collapse-title text-xl font-medium">
+                        What do you mean by REST API?
+                    </div>
+                    <div class="collapse-content"> 
+                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- banner section ends here -->
     </main>
 </body>
 </html>

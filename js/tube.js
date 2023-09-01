@@ -24,10 +24,10 @@ const handleCategory = async () =>{
         trimmedData.forEach((news) =>{
             const div= document.createElement('div')
             div.innerHTML = 
-            `<div class="card w-96 h-96 bg-base-100 shadow-xl m-5">
+            `<div class="card md:w-80 md:h-80 lg:w-96 lg:h-96 bg-base-100 shadow-xl m-5">
             <figure><img src="${news?.thumbnail}" alt="card" class="w-96"/>
             <div class="absolute">
-            <div class="absolute top-14 left-10 right-0 pr-20 px-4 bg-black rounded-xl text-white">${news?.others?.posted_date}</div>
+            <div class="absolute top-16 left-20 right-10 pr-20 px-4 bg-black rounded-xl text-white">${news?.others?.posted_date}</div>
             <div>
             </figure>
             <div class="card-body">
@@ -41,7 +41,7 @@ const handleCategory = async () =>{
                     <p>${news?.authors[0].profile_name}</p>
                     <p>${news.authors[0].verified ? '<img src="./img/var.svg" class="mr-28 ">' : " "}</p>                  
                 </div>
-                <p class="ml-16">${news?.others?.views}</p>
+                <p class="ml-16">${news?.others?.news}</p>
           </div>
     </div>`;
     cardContainer.appendChild(div);
@@ -50,4 +50,5 @@ const handleCategory = async () =>{
     }
 handleCategory()
 handleLoadContent(1000)
-// 
+
+    // sorting 
