@@ -20,26 +20,33 @@ const handleCategory = async () =>{
         const trimmedData = data.data;
 
         const cardContainer = document.getElementById('card-container')
-
+        cardContainer.innerHTML = "";
         trimmedData.forEach((news) =>{
             const div= document.createElement('div')
             div.innerHTML = 
             `<div class="card w-96 h-96 bg-base-100 shadow-xl m-5">
-            <figure><img src="${news?.thumbnail}" alt="card" /></figure>
+            <figure><img src="${news?.thumbnail}" alt="card" />
+            <div class="absolute">
+            <div class="absolute top-14 left-10 right-0 pr-20 px-4 bg-black rounded-xl text-white">${news?.others?.posted_date}</div>
+            <div>
+            </figure>
             <div class="card-body">
-                <div class="card-footer flex mt-2 gap-2">
-                    <div class="w-14 rounded-full">
-                        <img src="${news.authors?.profile_picture}" />
+                <div class="card-footer flex mt-2 gap-4">
+                    <div class="w-12 ">
+                        <img src="${news?.authors[0].profile_picture}" class="rounded-full w-10 h-10" />
                     </div>
                     <h2 class="card-title text-left">${news?.title}</h2>                      
                 </div>
-                <div class="ml-16">
-                    <p>${news?.authors?.profile_name}</p>
-                    <p>91k views</p>
+                <div class="ml-16 flex">
+                    <p>${news?.authors[0].profile_name}</p>
+                    <p>${news.authors[0].verified ? '<img src="./img/var.svg" class="mr-28">' : " "}</p>                  
                 </div>
+                <p class="ml-16">${news?.others?.views}</p>
           </div>
     </div>`;
     cardContainer.appendChild(div);
         })
     }
 handleCategory()
+handleLoadContent(1000)
+// 
