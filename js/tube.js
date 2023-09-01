@@ -25,7 +25,7 @@ const handleCategory = async () =>{
             const div= document.createElement('div')
             div.innerHTML = 
             `<div class="card w-96 h-96 bg-base-100 shadow-xl m-5">
-            <figure><img src="${news?.thumbnail}" alt="card" />
+            <figure><img src="${news?.thumbnail}" alt="card" class="w-96"/>
             <div class="absolute">
             <div class="absolute top-14 left-10 right-0 pr-20 px-4 bg-black rounded-xl text-white">${news?.others?.posted_date}</div>
             <div>
@@ -39,13 +39,14 @@ const handleCategory = async () =>{
                 </div>
                 <div class="ml-16 flex">
                     <p>${news?.authors[0].profile_name}</p>
-                    <p>${news.authors[0].verified ? '<img src="./img/var.svg" class="mr-28">' : " "}</p>                  
+                    <p>${news.authors[0].verified ? '<img src="./img/var.svg" class="mr-28 ">' : " "}</p>                  
                 </div>
                 <p class="ml-16">${news?.others?.views}</p>
           </div>
     </div>`;
     cardContainer.appendChild(div);
         })
+        
     }
 handleCategory()
 handleLoadContent(1000)
