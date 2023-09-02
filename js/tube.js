@@ -34,9 +34,9 @@ const handleCategory = async () =>{
         trimmedData.forEach((news) =>{
             const div= document.createElement('div')
             div.innerHTML = 
-            `<div class="card w-80 md:w-72 md:h-80 lg:w-80 lg:h-96 bg-base-100 shadow-xl m-5 ">
+            `<div class="card w-80 md:w-80 md:h-80 lg:w-80 lg:h-96 bg-base-100 shadow-xl m-5 ">
             <figure><img src="${news?.thumbnail}" alt="card" class="w-80 h-48"/>          
-            <p class="absolute flex justify-center md:top-38 lg:top-36 lg:left-40 bg-gray-400 rounded-xl text-black text-xs w-28 font-semibold">${secondsToHour(news?.others?.posted_date)}</p>           
+            <p class="absolute flex justify-center top-40 left-44 md:top-28 md:left-44 lg:top-40 lg:left-44  bg-gray-500 rounded-sm text-black text-xs w-28 font-semibold">${secondsToHour(news?.others?.posted_date)}</p>           
             </figure>
             <div class="card-body">
                 <div class="card-footer flex mt-2 gap-4">
@@ -71,8 +71,8 @@ const handleCategory = async () =>{
             const div= document.createElement('div')
             div.innerHTML = 
             `<div class="card w-80 md:w-72 md:h-80 lg:w-80 lg:h-96 bg-base-100 shadow-xl m-5 ">
-            <figure><img src="${news?.thumbnail}" alt="card" class="w-80 h-48"/>          
-            <p class="absolute flex justify-center md:top-38 lg:top-36 lg:left-40 bg-gray-400 rounded-xl text-black text-xs w-28 font-semibold">${secondsToHour(news?.others?.posted_date)}</p>           
+            <figure><img src="${news?.thumbnail}" alt="card" class="w-80 h-52"/>          
+            <p class="absolute flex justify-center top-40 left-44 md:top-28 md:left-44 lg:top-40 lg:left-44 bg-gray-500 rounded-sm text-black text-xs w-28 font-semibold">${secondsToHour(news?.others?.posted_date)}</p>           
             </figure>
             <div class="card-body">
                 <div class="card-footer flex mt-2 gap-4">
@@ -93,8 +93,8 @@ const handleCategory = async () =>{
     });
 };
 
-// function for time
-const secondsToHour = (seconds) => {
+    // function for time
+    const secondsToHour = (seconds) => {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
 
@@ -105,8 +105,6 @@ const secondsToHour = (seconds) => {
     
     return formattedTime;
   }
-
-
 
 handleCategory()
 handleLoadContent(1000)
