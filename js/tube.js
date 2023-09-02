@@ -19,7 +19,7 @@ const handleCategory = async () =>{
         const data = await res.json();
         const trimmedData = data.data;
 
-        // drawing
+        // drawing btn content 
         const drawingContainer = document.getElementById('drawing-container');
 
         if (trimmedData.length === 0) {
@@ -28,7 +28,7 @@ const handleCategory = async () =>{
         else {
             drawingContainer.classList.add('hidden');
         }
-
+        // for others btn content in card
         const cardContainer = document.getElementById('card-container')
         cardContainer.innerHTML = "";
         trimmedData.forEach((news) =>{
@@ -46,20 +46,52 @@ const handleCategory = async () =>{
                     <h2 class="card-title text-left">${news?.title}</h2>                      
                 </div>
                 <div class="ml-16 flex">
-                    <p>${news?.authors[0].profile_name}</p>
-                    <p>${news.authors[0].verified ? '<img src="./img/var.svg" class="mr-28 ">' : " "}</p>                  
+                    <p class="text-xs">${news?.authors[0].profile_name}</p>
+                    <p class="text-sm">${news.authors[0].verified ? '<img src="./img/var.svg" class="mr-20">' : " "}</p>                  
                 </div>
                 <p class="ml-16">${news?.others?.views}</p>
           </div>
     </div>`;
     cardContainer.appendChild(div);
         });
+        // for sorting
+        document.getElementById('btn-sort').addEventListener('click', () => { handleSorting(trimmedData) });
     }
         
     // sorting
+    const handleSorting = (trimmedData) => {
+        trimmedData.sort((x, y) => {
+            const sortX = parseFloat(x.others.views.replace('K', '')) * 1000;
+            const sortY = parseFloat(y.others.views.replace('K', '')) * 1000;
+            return sortY - sortX;
+        });
+        const cardContainer = document.getElementById('card-container')
+        cardContainer.innerHTML = "";
+        trimmedData.forEach((news) =>{
+            const div= document.createElement('div')
+            div.innerHTML = 
+            `<div class="card w-80 md:w-72 md:h-80 lg:w-80 lg:h-96 bg-base-100 shadow-xl m-5 ">
+            <figure><img src="${news?.thumbnail}" alt="card" class="w-80 h-48"/>          
+            <p class="absolute flex justify-center md:top-38 lg:top-36 lg:left-40 bg-gray-400 rounded-xl text-black text-xs w-28 font-semibold">${secondsToHour(news?.others?.posted_date)}</p>           
+            </figure>
+            <div class="card-body">
+                <div class="card-footer flex mt-2 gap-4">
+                    <div class="w-12 ">
+                        <img src="${news?.authors[0].profile_picture}" class="rounded-full w-10 h-10" />
+                    </div>
+                    <h2 class="card-title text-left">${news?.title}</h2>                      
+                </div>
+                <div class="ml-16 flex">
+                    <p class="text-xs">${news?.authors[0].profile_name}</p>
+                    <p class="text-sm">${news.authors[0].verified ? '<img src="./img/var.svg" class="mr-20">' : " "}</p>                  
+                </div>
+                <p class="ml-16">${news?.others?.views}</p>
+          </div>
+    </div>`;
+    cardContainer.appendChild(div);
 
-handleCategory()
-handleLoadContent(1000)
+    });
+};
 
 // function for time
 const secondsToHour = (seconds) => {
@@ -73,5 +105,11 @@ const secondsToHour = (seconds) => {
     
     return formattedTime;
   }
+
+
+
+handleCategory()
+handleLoadContent(1000)
+
   
 
